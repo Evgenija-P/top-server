@@ -1,6 +1,6 @@
 import { Schema } from '@nestjs/mongoose';
 
-@Schema
+// @Schema
 export class User {
   email: string;
   password: string;
