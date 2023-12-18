@@ -7,20 +7,18 @@ import { ProductModule } from './product/product.module';
 import { ReviewModule } from './review/review.module';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
-import { UsersModule } from './users/users.module';
-import { UsersService } from './users/users.service';
+import configuration from './config/configuration';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
-    MongooseModule.forRoot('mongodb://localhost/test'),
+    ConfigModule.forRoot({ load: [configuration] }),
+    MongooseModule.forRoot('mongodb://eapoduzova:vlkfdtPWr4Q3pqEq@cluster0.vbdcrfs.mongodb.net/'),
     AuthModule,
     TopPageModule,
     ProductModule,
     ReviewModule,
-    UsersModule,
   ],
   controllers: [AppController],
-  providers: [AppService, UsersService],
+  providers: [AppService],
 })
 export class AppModule {}
